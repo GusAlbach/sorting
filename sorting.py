@@ -10,7 +10,8 @@ if cmp(a, b) returns  1, then a > b;
 if cmp(a, b) returns  0, then a == b.
 '''
 
-import random
+# import random
+
 
 def cmp_standard(a, b):
     '''
@@ -99,6 +100,7 @@ def _merged(xs, ys, cmp=cmp_standard):
 
     return ret
 
+
 def merge_sorted(xs, cmp=cmp_standard):
     '''
     Merge sort is the standard O(n log n) sorting algorithm.
@@ -120,9 +122,9 @@ def merge_sorted(xs, cmp=cmp_standard):
     mid = len(xs) // 2
     left = xs[:mid]
     right = xs[mid:]
-    left_sorted = merge_sorted(left, cmp = cmp)
-    right_sorted = merge_sorted(right, cmp = cmp)
-    return _merged(left_sorted, right_sorted, cmp = cmp)
+    left_sorted = merge_sorted(left, cmp=cmp)
+    right_sorted = merge_sorted(right, cmp=cmp)
+    return _merged(left_sorted, right_sorted, cmp=cmp)
 
 
 def quick_sorted(xs, cmp=cmp_standard):
@@ -130,7 +132,7 @@ def quick_sorted(xs, cmp=cmp_standard):
     Quicksort is like mergesort,
     but it uses a different strategy to split the list.
     Instead of splitting the list down the middle,
-    a "pivot" value is randomly selected, 
+    a "pivot" value is randomly selected,
     and the list is split into a "less than" sublist and a "greater than" sublist.
 
     The pseudocode is:
@@ -151,12 +153,12 @@ def quick_sorted(xs, cmp=cmp_standard):
     if len(xs) <= 1:
         return xs
     mid = len(xs) // 2
-    pivot = xs[mid] 
+    pivot = xs[mid]
     xs_lt = [x for x in xs if cmp(x, pivot) == -1]
     xs_gt = [x for x in xs if cmp(x, pivot) == 1]
     xs_eq = [x for x in xs if cmp(x, pivot) == 0]
-    xs_lt = quick_sorted(xs_lt, cmp = cmp)
-    xs_gt = quick_sorted(xs_gt, cmp = cmp)
+    xs_lt = quick_sorted(xs_lt, cmp=cmp)
+    xs_gt = quick_sorted(xs_gt, cmp=cmp)
     return xs_lt + xs_eq + xs_gt
 
 
